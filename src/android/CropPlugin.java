@@ -2,6 +2,7 @@ package com.isathyam.icrop;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -39,11 +40,16 @@ public class CropPlugin extends CordovaPlugin {
           pr.setKeepCallback(true);
           callbackContext.sendPluginResult(pr);
           this.callbackContext = callbackContext;
-
+          UCrop.Options option = new UCrop.Options();
+          option.setToolbarColor(Color.BLACK);
+          option.setStatusBarColor(Color.BLACK);
+          option.setActiveWidgetColor(Color.BLACK);
+          option.setLogoColor(Color.BLACK);
           cordova.setActivityResultCallback(this);
           UCrop.of(this.inputUri, this.outputUri)
-                  .withAspectRatio(16, 9)
+                  .withAspectRatio(9, 16)
                   .withMaxResultSize(800, 2400)
+                  .withOptions(option)
                   .start(cordova.getActivity());
 
           return true;
