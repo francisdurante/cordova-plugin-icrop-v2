@@ -45,6 +45,7 @@ public class CropPlugin extends CordovaPlugin {
           option.setStatusBarColor(Color.BLACK);
           option.setActiveWidgetColor(Color.BLACK);
           option.setLogoColor(Color.BLACK);
+          option.setCompressionQuality(70);
           cordova.setActivityResultCallback(this);
           UCrop.of(this.inputUri, this.outputUri)
                   .withAspectRatio(9, 16)
