@@ -48,6 +48,7 @@ public class CropPlugin extends CordovaPlugin {
           option.setCompressionQuality(100);
           cordova.setActivityResultCallback(this);
           UCrop.of(this.inputUri, this.outputUri)
+				  .withAspectRatio(9, 16)
                   .withOptions(option)
                   .start(cordova.getActivity());
 
