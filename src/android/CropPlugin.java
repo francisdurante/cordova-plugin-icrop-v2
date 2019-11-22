@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Environment;
 
 import com.yalantis.ucrop.UCrop;
+import com.yalantis.ucrop.model.AspectRatio;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -45,9 +46,19 @@ public class CropPlugin extends CordovaPlugin {
           option.setStatusBarColor(Color.BLACK);
           option.setActiveWidgetColor(Color.BLACK);
           option.setLogoColor(Color.BLACK);
+          option.setRootViewBackgroundColor(Color.BLACK);
+          option.setCompressionQuality(100);
+          option.setFreeStyleCropEnabled(true);
+          option.setShowCropGrid(false);
+          option.setAspectRatioOptions(2,
+            new AspectRatio("1x1", 1, 1),
+            new AspectRatio("3x4", 3, 4),
+            new AspectRatio("F!eek size", 9, 16),
+            new AspectRatio("3x2", 3, 2),
+            new AspectRatio("16:9", 16, 9)
+            );
           cordova.setActivityResultCallback(this);
           UCrop.of(this.inputUri, this.outputUri)
-				  .withAspectRatio(9, 16)
                   .withOptions(option)
                   .start(cordova.getActivity());
 
