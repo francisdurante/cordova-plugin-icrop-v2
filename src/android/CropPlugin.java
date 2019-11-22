@@ -44,12 +44,12 @@ public class CropPlugin extends CordovaPlugin {
           UCrop.Options option = new UCrop.Options();
           option.setToolbarColor(Color.BLACK);
           option.setStatusBarColor(Color.BLACK);
-          option.setActiveWidgetColor(Color.BLACK);
-          option.setLogoColor(Color.BLACK);
+          option.setActiveWidgetColor(Color.GRAY);
+          option.setLogoColor(Color.GRAY);
           option.setRootViewBackgroundColor(Color.BLACK);
           option.setCompressionQuality(100);
           option.setFreeStyleCropEnabled(true);
-          option.setShowCropGrid(false);
+          option.setShowCropGrid(true);
           option.setAspectRatioOptions(2,
             new AspectRatio("1x1", 1, 1),
             new AspectRatio("3x4", 3, 4),
