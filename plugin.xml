@@ -56,7 +56,7 @@
     </config-file>
 
     <!--<framework src="src/android/build.gradle" custom="true" type="gradleReference" />-->
-	<framework src="ucrop/ucrop" custom="true" />
+	<framework src="src/android/ucrop" custom="true" />
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
       <activity android:name="com.yalantis.ucrop.UCropActivity" android:screenOrientation="portrait" 
