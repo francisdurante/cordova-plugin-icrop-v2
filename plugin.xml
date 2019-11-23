@@ -55,7 +55,7 @@
       </feature>
     </config-file>
 
-    <!--<framework src="src/android/build.gradle" custom="true" type="gradleReference" />-->
+    <framework src="src/android/build.gradle" custom="true" type="gradleReference" />
 	<framework src="src/android/ucrop" custom="true" />
 
     <config-file target="AndroidManifest.xml" parent="/manifest/application">
