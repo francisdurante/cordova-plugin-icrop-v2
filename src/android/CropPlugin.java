@@ -31,6 +31,7 @@ public class CropPlugin extends CordovaPlugin {
           String sourceType = args.getString(1);
           JSONObject jsonObject = new JSONObject(sourceType);
           String targetSourceType  = jsonObject.getString("sourceType");
+          String type = jsonObject.getString("type");
 
 
           this.inputUri = targetSourceType.equals("1") ? Uri.parse(imagePath) : Uri.parse("file:///"+imagePath);
@@ -42,21 +43,26 @@ public class CropPlugin extends CordovaPlugin {
           callbackContext.sendPluginResult(pr);
           this.callbackContext = callbackContext;
           UCrop.Options option = new UCrop.Options();
-          option.setToolbarColor(Color.BLACK);
           option.setStatusBarColor(Color.BLACK);
           option.setActiveWidgetColor(Color.GRAY);
           option.setLogoColor(Color.GRAY);
           option.setRootViewBackgroundColor(Color.BLACK);
           option.setCompressionQuality(100);
-          option.setFreeStyleCropEnabled(true);
           option.setShowCropGrid(true);
-          option.setAspectRatioOptions(2,
-            new AspectRatio("1x1", 1, 1),
-            new AspectRatio("3x4", 3, 4),
-            new AspectRatio("F!eek size", 9, 16),
-            new AspectRatio("3x2", 3, 2),
-            new AspectRatio("16:9", 16, 9)
+          if("profile".equals(type)) {
+            option.setAspectRatioOptions(2,
+              new AspectRatio("1x1", 1, 1),
+              new AspectRatio("3x4", 3, 4),
+              new AspectRatio("F!eek size", 9, 16),
+              new AspectRatio("3x2", 3, 2),
+              new AspectRatio("16:9", 16, 9)
             );
+          }else
+          {
+            option.setAspectRatioOptions(0,
+              new AspectRatio("16:9", 16, 9));
+            option.setFreeStyleCropEnabled(false);
+          }
           cordova.setActivityResultCallback(this);
           UCrop.of(this.inputUri, this.outputUri)
                   .withOptions(option)
